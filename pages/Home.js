@@ -2,43 +2,62 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import donate from '../assest/donateMoney.png';
 import Navbar from '../components/Navbar';
+import styles from '../styles/Home.module.css';
+import { useAccount } from 'wagmi';
 import { useRouter } from 'next/router';
-
+import { useDisconnect } from 'wagmi';
+import Footer from '../components/footer';
 const HomePage = () => {
+  const { disconnect } = useDisconnect();
   const router = useRouter();
-
-  const starter = () => {
-    router.push('/overview');
+  // const account = useAccount({
+  //   onDisconnect() {
+  //     console.log('Disconnected');
+  //     router.push('/index.js');
+  //   }
+  // });
+  const mainpageclick = () => {
+    router.push('/profile/8'); // DYNAMIC
   };
+
   return (
-    <div>
+    <div className={styles.home}>
       <Navbar />
+<<<<<<< HEAD
       <div className="flex">
         <div className="p-10 w-7/12 pt-32">
           <p className="text-4xl font-bold text-green-500 text-gradient bg-gradient-to-r from-green-600 via-blue-400 to-blue-500  pb-10">
             A place where you can gather funding for your projects
+=======
+
+      <div className="flex   ">
+        <div className="m-10 w-7/12   justify-end items-end">
+          <p className="text-5xl font-bold   mb-8  w-10/12">
+            <span className={styles.gradientText}>
+              A place where you can gather funding for your projects
+            </span>
+>>>>>>> 78be63610e8f73b810bae4ddb385817c3ab30020
           </p>
-          <p className="text-2xl dark:text-green-600 leading-loose">
+
+          <p className="text-2xl    leading-extra-loose  w-9/12">
             Funder is a web3 charity funding platform. Where organizers could
             post projects and gather funding for your project in a decentralized
-            and transparent manner. <br /> <br /> Users can donate with crypto
-            currency and help others in their goal
+            and transparent manner. Users can donate with crypto currency and
+            help others in their goal
           </p>
-          <button
-            onClick={starter}
-            className="mt-20 p-2 pl-3 pr-3 text-black font-bold shadow-lg bg-green-600  dark:bg-gradient-to-b from-green-600 to-black ml-10"
-          >
-            {' '}
-            Get Started
+
+          <button className={styles.gradientButton} onClick={mainpageclick}>
+            <span className="px-5   py-8 font-bold text-black-background  ">
+              {' '}
+              Get Started
+            </span>
           </button>
         </div>
-        <div>
+        <div className="w-5/12 justify-end items-end">
           <Image src={donate} alt="donate-funds" />
         </div>
       </div>
-      <p className="text-center text-3xl text-green-500 font-bold">
-        What we are all about
-      </p>
+      <Footer />
     </div>
   );
 };

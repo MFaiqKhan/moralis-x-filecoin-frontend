@@ -6,29 +6,23 @@ import program1 from '../../assest/program1.png';
 import Layout from '../../components/Layout';
 import Person from '../../assest/person.png';
 import styles from '../../styles/Home.module.css';
-import Footer from '../../components/footer';
 
 const ProfilePage = () => {
   return (
     <div>
       <Layout>
-        <div className="flex ml-24 h-fullPage text-light-green ">
+        <div className="flex ml-10 text-light-green">
           <div>
             <div className="inline-flex">
-              <p className="text-4xl mr-56 ml-5 font-bold   mt-7">My Profile</p>
+              <p className="text-4xl mr-56 ml-5 font-bold   mt-7">
+                User Profile
+              </p>
               <div className="flex ml-96">
-                {/* <Image
-                  src={moneyBag}
-                  height="30px"
-                  width="30px"
-                  
-                  alt="moneyBag"
-                /> */}
                 <div className=" flex mt-8">
                   <div className="bg-light-green px-4 py-1 text-black-background rounded-md h-fit font-bold text-xl ">
                     Total funds donated :
                   </div>
-                  {/* <p className="text-3xl mt-6 ml-3  font-bold ">:</p> */}
+
                   <div className="bg-light-green px-4 py-1 ml-2 text-black-background rounded-md h-fit font-bold text-xl  ">
                     500 $ {/*    Make this dynamic amont donated by user */}
                   </div>
@@ -50,9 +44,9 @@ const ProfilePage = () => {
                   0xea123456789101112{' '}
                 </p>
                 {/* For user only chat button*/}
-                {/* <button className="bg-light-green px-4 mt-3 text-black-background rounded-md h-fit font-bold text-xl">
+                <button className="bg-light-green px-4 mt-3 text-black-background rounded-md h-fit font-bold text-xl">
                   Chat
-                </button> */}
+                </button>
               </div>
               <p className="mt-5 text-2xl leading-loose font-bold mb-3 ">
                 NFT&apos;s Recieved
@@ -90,7 +84,6 @@ const ProfilePage = () => {
           </div>
         </div>
       </Layout>
-      <Footer />
     </div>
   );
 };

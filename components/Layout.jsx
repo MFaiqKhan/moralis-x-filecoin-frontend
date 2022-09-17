@@ -4,52 +4,51 @@ import { useRouter } from 'next/router';
 import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
+  const [currentPage, setCurrentPage] = useState(0);
   const router = useRouter();
   const notClicked =
-    'hover:bg-green-600 rounded-lg p-2 mb-4 font-bold text-green-600 dark:hover:text-black';
+    'bg-green-600 hover:bg-green-800 rounded-lg pr-16 pb-1 pt-1 pl-6 mb-4 font-bold text-left';
+
   const onClickedOn =
-    'bg-green-600 rounded-lg p-2 mb-4 font-bold dark:text-black';
+    'bg-light-green text-black-background rounded-lg pr-16 pb-1 pt-1 pl-6  mb-4   font-bold text-left ';
+
   const _profilepage = () => {
-    router.push('/profile/8');
+    setCurrentPage(0);
+    router.push('/profile/8'); // Make this Dynamic
   };
   const _fundingPage = () => {
-    router.push('/my-funding-projects');
+    setCurrentPage(1);
+    router.push('/my-funding-projects/1'); // Make this Dynamic
   };
   const _fundingProgram = () => {
+    setCurrentPage(2);
     router.push('/funding-programs');
   };
 
   return (
-    <div>
-      <Navbar addDesign="dark:border-green-600" />
-      <div className="flex">
-        <div className="flex w-80 h-full border-r-4 border-black dark:border-green-600">
-          <div className="flex flex-col p-10 mt-10 ml-5 h-screen">
+    <div className="bg-black-background text-light-green ">
+      <Navbar />
+      <hr className="h-1 rounded-lg w-full bg-light-green " />
+      <div className="flex ml-6 ">
+        <div className="flex w-80   border-r-4 border-light-green">
+          <div className="flex flex-col mt-10 ml-5 h-screen">
             <button
+              className={currentPage === 0 ? onClickedOn : notClicked}
               onClick={_profilepage}
-              className={`hover:text-white ${
-                router.pathname.includes('/profile/') ? onClickedOn : notClicked
-              }`}
             >
               My Profile
             </button>
             <button
               onClick={_fundingPage}
-              className={`hover:text-white ${
-                router.pathname === '/my-funding-projects'
-                  ? onClickedOn
-                  : notClicked
-              }`}
+
+              className={currentPage === 1 ? onClickedOn : notClicked}
+
             >
               My Funding Projects
             </button>
             <button
               onClick={_fundingProgram}
-              className={`hover:text-white ${
-                router.pathname === '/funding-programs'
-                  ? onClickedOn
-                  : notClicked
-              }`}
+              className={currentPage === 2 ? onClickedOn : notClicked}
             >
               Funding Programs
             </button>

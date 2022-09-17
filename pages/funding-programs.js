@@ -8,7 +8,8 @@ import { GiSandsOfTime } from 'react-icons/gi';
 import { BiDollarCircle } from 'react-icons/bi';
 import { BsCheckCircle } from 'react-icons/bs';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-
+import styles from '../styles/Home.module.css';
+import Footer from '../components/footer';
 const FundingProgram = () => {
   const [verify, setVerify] = useState(true);
   const [progress, setProgress] = useState(false);
@@ -51,15 +52,19 @@ const FundingProgram = () => {
     router.push(`/completed/8`);
   };
   return (
-    <div>
+    <div className={styles.home}>
       <Layout>
-        <div className="w-full mt-10">
-          <div>
-            <p className="text-green-600 font-bold ml-20 text-3xl">
+        <div className="w-full ">
+          <div className="mt-10 flex">
+            <p className="text-light-green font-bold ml-24 text-3xl   ">
               Funding programs
             </p>
+            <button className="bg-light-green px-4   text-black-background ml-custom rounded-md   font-bold text-xl hover:scale-110 transition ease-in duration-150">
+              Create new program
+            </button>
           </div>
-          <div className="flex mt-14 ml-40 mr-80">
+
+          <div className="flex 4 ml-24 mt-10 mr-80">
             <div>
               <p
                 onClick={verifyClick}
@@ -70,7 +75,7 @@ const FundingProgram = () => {
                 Verifying <GiSandsOfTime className="mt-1" />
               </p>
               {verify && (
-                <hr className="w-full h-1  bg-green-600 rounded-lg " />
+                <hr className="w-full  h-1  bg-light-green rounded-lg " />
               )}
             </div>
 
@@ -78,13 +83,13 @@ const FundingProgram = () => {
               <p
                 onClick={progressClick}
                 className={`text-xl font-bold hover:cursor-pointer ml-16 flex ${
-                  progress ? 'text-green-600' : ''
+                  progress ? 'text-light-green' : ''
                 }`}
               >
                 In progress <BiDollarCircle className="mt-1 ml-1" />
               </p>
               {progress && (
-                <hr className="w-28 h-1 ml-16 bg-green-600 rounded-lg " />
+                <hr className="w-28 h-1 ml-16 bg-light-green rounded-lg  " />
               )}
             </div>
             <div>
@@ -97,7 +102,7 @@ const FundingProgram = () => {
                 Rejected <AiOutlineCloseCircle className="mt-1 ml-1" />
               </p>
               {reject && (
-                <hr className="w-24 h-1 ml-16 bg-green-600 rounded-lg " />
+                <hr className="w-24 h-1 ml-16 bg-light-green rounded-lg " />
               )}
             </div>
             <div>
@@ -110,7 +115,7 @@ const FundingProgram = () => {
                 Completed <BsCheckCircle className="mt-1 ml-1" />
               </p>
               {completed && (
-                <hr className="w-28 h-1 ml-16 bg-green-600 rounded-lg " />
+                <hr className="w-28 h-1 ml-16 bg-light-green rounded-lg " />
               )}
             </div>
           </div>
@@ -152,10 +157,10 @@ const FundingProgram = () => {
                 progressAmount="500/1000"
                 progressValue={50}
                 title="Health care program"
-                buttonDesign={`mt-5 bg-green-600 p-1 ml-1 font-semibold text-white text-xs rounded-md mb-3`}
+                buttonDesign={`mt-5 bg-light-green p-1 ml-1 font-semibold text-white text-xs rounded-md mb-3`}
                 progressDesign={`ml-10 h-3 rounded-lg bg-transparent mb-3 w-28`}
                 onClicked={progressButton}
-                boxDesign="w-60 dark:shadow-green-600"
+                boxDesign="w-60 dark:shadow-light-green"
               />
             </div>
           )}
@@ -198,6 +203,7 @@ const FundingProgram = () => {
           )}
         </div>
       </Layout>
+      <Footer />
     </div>
   );
 };
